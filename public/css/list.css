@@ -48,7 +48,7 @@ body {
 /* 제목 */
 #headFont{
     margin-top: 20px;
-    font-size: 80px;
+    font-size: 50px;
     font-family: BMDOHYEON, sans-serif;
     color: rgb(45, 206, 168);
     text-transform: uppercase;
@@ -282,7 +282,7 @@ transform: rotate(180deg);
 #SelectDate {
     padding: 5px 0px;
 }
-#filter{
+.filter{
     width: 120px;
     padding: 5px 8px;
 }

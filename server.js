@@ -24,20 +24,39 @@ app.use(express.static(__dirname + '/public'));
 //     console.log(results);
 // });
 
-app.get("/",function(request,response){  
-  connection.query('SELECT * FROM temp', function (error, results, fields) {
-    if (error) {
-        console.log(error);
-    }
-    else {
-      console.log(results);
-      fs.writeFile('list.json', JSON.stringify(results), function(err){
-        if(err) throw err;
-        console.log('Saved!');
-      })
-      response.send(results); 
-    }
-  })
+app.get("/data",function(request,response){  
+  if(request.query.date == null){
+    connection.query('SELECT * FROM temp', function (error, results, fields) {
+      if (error) {
+          console.log(error);
+      }
+      else {
+        //console.log(results);
+        fs.writeFile('list.json', JSON.stringify(results), function(err){
+          if(err) throw err;
+          //console.log('Saved!');
+        })
+        response.json(results); 
+      }
+    })
+  }
+  else{
+    query = 'SELECT * FROM temp where webpath like "https://192.168.0.4/' + request.query.date + '%";'
+    connection.query(query, function (error, results, fields) {
+      if (error) {
+          console.log(error);
+      }
+      else {
+        //console.log(query);
+        fs.writeFile('list.json', JSON.stringify(results), function(err){
+          if(err) throw err;
+          //console.log('Saved!');
+        })
+        response.json(results); 
+      }
+    })
+  }
+})
   // var jsonfile = {
   //   "userId": 1,
   //   "id": 1,
@@ -45,7 +64,6 @@ app.get("/",function(request,response){
   //   "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
   // }
   // response.send(jsonfile)
-})
 
 app.get("/list",function(request,response){  
   response.sendfile(__dirname + '/public/html/list.html');
