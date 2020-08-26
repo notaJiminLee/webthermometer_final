@@ -24,7 +24,7 @@ app.use(express.static(__dirname + '/public'));
 //     console.log(results);
 // });
 
-app.get("/data",function(request,response){  
+app.get("/",function(request,response){  
   connection.query('SELECT * FROM temp', function (error, results, fields) {
     if (error) {
         console.log(error);
