@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/list.css">
+    <script type="text/javascript" href="./../../list.json"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+
+<body>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Create two variable with the names of the months and days in an array
+            var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August",
+                "September", "October", "November", "December"
+            ];
+            var dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+
+            // Create a newDate() object
+            var newDate = new Date();
+            // Extract the current date from Date object
+            newDate.setDate(newDate.getDate());
+            // Output the day, date, month and year   
+            $('#Date').html(dayNames[newDate.getDay()] + " " + newDate.getDate() + ' ' + monthNames[newDate
+                .getMonth()] + ' ' + newDate.getFullYear());
+
+            setInterval(function () {
+                // Create a newDate() object and extract the seconds of the current time on the visitor's
+                var seconds = new Date().getSeconds();
+                // Add a leading zero to seconds value
+                $("#sec").html((seconds < 10 ? "0" : "") + seconds);
+            }, 1000);
+
+            setInterval(function () {
+                // Create a newDate() object and extract the minutes of the current time on the visitor's
+                var minutes = new Date().getMinutes();
+                // Add a leading zero to the minutes value
+                $("#min").html((minutes < 10 ? "0" : "") + minutes);
+            }, 1000);
+
+            setInterval(function () {
+                // Create a newDate() object and extract the hours of the current time on the visitor's
+                var hours = new Date().getHours();
+                // Add a leading zero to the hours value
+                $("#hours").html((hours < 10 ? "0" : "") + hours);
+            }, 1000);
+        });
+    </script>
+
+    <!-- ----------------- 상단 ------------------ -->
+    <div id="header">
+        <!-- 시계와날짜, 타이틀, 현황카드 -->
+        <div id="one">
+            <!-- 시계와날짜, 타이틀 -->
+            <div id="title">
+                <!--제목-->
+                <h1 id="headFont">thermoface</h1>
+
+                <!-- 실시간 시계-->
+                <div class="clock">
+                    <div id="Date"></div>
+                    <div id="timer">
+                        <span id="hours"></span>
+                        <span class="point">:</span>
+                        <span id="min"></span>
+                        <span class="point">:</span>
+                        <span id="sec"></span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ----------------- select박스 ------------------ -->
+    <div id="select">
+
+        <div id="select_date">
+            <div class="select-style">
+                <input type="date" id="SelectDate" name="trip-start"
+                        value="2018-07-22"
+                        min="2020-01-01" 
+                        max="2020-12-01">
+            </div>
+        </div>
+
+        <!-- <div id="select_grade">
+            <div class="select-style">
+                <select id="id_grade">
+                    <option value="0">학년</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="select_class">
+            <div class="select-style">
+                <select id="id_class">
+                    <option value="0">반</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="select_time">
+            <div class="select-style">
+                <select id="id_time">
+                    <option value="0">시간</option>
+                </select>
+            </div>
+        </div> -->
+
+        <button id="filter">조회</button>
+    </div>
+
+    <!-- ----------------- 테이블 ------------------ -->
+    <!-- <div id="tables">
+        <div class="tbl-header">
+            <table cellpadding="0" cellspacing="0">
+                <thead>
+                    <tr>
+                    <th>날짜</th>
+                    <th>학년</th>
+                    <th>반</th>
+                    <th>번호</th>
+                    <th>이름</th>
+                    <th>체온</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="tbl-content">
+            <table cellpadding="0" cellspacing="0" id="record">
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div> -->
+
+    <div id="table">
+        <div class="tableheader">
+            <div class="section" style="margin-right: -40px;">날짜</div>
+            <div class="section" style="margin-right: -50px;">시간</div>
+            <div class="section">체온</div>
+            <div class="section">이미지 링크</div>
+        </div>
+        <div class="tablebody">
+            <div class='studentSection' id='1234' name='지민'>    
+                <div class='section date'>2020.08.24.</div>    
+                <div class='section grade'>오후 8시 10분</div>
+                <div class='section class'>36.5</div>
+                <div class='section name'>https://192.168.0.10:80/202008244245</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/chart.js"></script>
+    <script src="../js/callApi.js"></script>
+</body>
+
+</html>
