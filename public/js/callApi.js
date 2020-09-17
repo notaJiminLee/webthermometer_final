@@ -58,12 +58,12 @@ $("#nofilter").click(function () {
 function setList(response) {
     $(".studentSection").remove();
     for (let i = 0; i < response.length; i++) {
-        var resulthour = response[i].webpath.charAt(25) + response[i].webpath.charAt(26);
+        var resulthour = response[i].webpath.charAt(38) + response[i].webpath.charAt(39);
         resulthour = gethour(resulthour);
-        var year = "20" + response[i].webpath.charAt(19) + response[i].webpath.charAt(20);
-        var month = response[i].webpath.charAt(21) + response[i].webpath.charAt(22);
-        var date = response[i].webpath.charAt(23) + response[i].webpath.charAt(24);
-        var minutes = response[i].webpath.charAt(27) + response[i].webpath.charAt(28)
+        var year = "20" + response[i].webpath.charAt(32) + response[i].webpath.charAt(33);
+        var month = response[i].webpath.charAt(34) + response[i].webpath.charAt(35);
+        var date = response[i].webpath.charAt(36) + response[i].webpath.charAt(37);
+        var minutes = response[i].webpath.charAt(40) + response[i].webpath.charAt(41)
         
         $(".tablebody").append(
             "<div class='studentSection' id='1234' name='지민'>" +
